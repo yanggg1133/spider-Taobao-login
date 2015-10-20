@@ -105,9 +105,9 @@ class Taobao:
     def loginWithCheckCode(self):
         checkcode = raw_input('请输入验证码')
         self.post['TPL_checkcode'] = checkcode
-        self.postData = urllib2.urlencode(self.post)
+        self.postData = urllib.urlencode(self.post)
         try:
-            request = urllib2.Request(self.loginURL,self.poatData,self.loginHeaders)
+            request = urllib2.Request(self.loginURL,self.postData,self.loginHeaders)
             response = self.opener.open(request)
             content = response.read().decode('gbk')
             pattern = re.compile(u'\u9a8c\u8bc1\u7801\u9519\u8bef',re.S)
